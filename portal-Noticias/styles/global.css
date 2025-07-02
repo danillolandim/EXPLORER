@@ -44,6 +44,9 @@ a:hover{
 h1, h2, h3{
     font: inherit;
 }
+img{
+    max-width: 100%;
+}
 
 .container{
     max-width: 1280px;
@@ -51,12 +54,9 @@ h1, h2, h3{
     margin-inline: auto;
 }
 
-/*utility first*/
-
-.grid{
-    display: grid;
+main{
+    margin-top: 40px;
 }
 
-.grid-flow-col{
-    grid-auto-flow: column;
-}
+
+
