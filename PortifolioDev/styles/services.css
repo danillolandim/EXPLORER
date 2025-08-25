@@ -1,0 +1,33 @@
+.services{
+    background-color: var(--base-gray-600);
+
+    padding: 88px;
+}
+
+.card-container{
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+}
+
+.card-service{
+    width: 280px;
+    height: 155px;
+
+    background-color: var(--base-gray-600);
+    border: 2px solid var(--base-gray-500);
+    border-radius: 12px;
+
+    padding: 20px;
+
+    
+}
+
+.card-service h3{
+    font: var(--h3);
+    color: var(--base-gray-200);
+
+    margin-top: 20px;
+    margin-bottom: 8px;
+
+}

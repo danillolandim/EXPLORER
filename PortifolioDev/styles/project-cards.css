@@ -1,0 +1,78 @@
+.project-cards{
+    background-color: var(--base-gray-500);
+    padding-top: 72px;
+
+    display: grid;
+    justify-content: center;
+
+    padding-bottom: 140px;
+}
+.card-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 56px;
+}
+
+.card-title p{
+    font: var(--h2-sub);
+    color: var(--color-red);
+    margin-bottom: 8px;
+}
+
+.card-title h2{
+    font: var(--h2);
+    color: var(--base-gray-100);
+    font-weight: 600;
+}
+.cards-container{
+    width: 1040px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    justify-items: center;
+    align-content: center;
+    gap: 24px;
+}
+.cards{
+    width: 330px;
+    height: 280px;
+
+    overflow: hidden;
+    background-color: var(--base-gray-400);
+    padding: 12px;
+
+    border-radius: 12px;
+
+    
+}
+
+.cards img{
+    object-fit: contain;
+    max-width: 100%;
+
+    border-radius: 12px; 
+    position: relative;
+
+    padding-bottom: 0px;
+
+
+}
+
+.cards h3{
+    font: var(--h3);
+    font-weight: 600;
+    color: var(--base-gray-100);
+
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.cards p{
+    font: var(--text-sm);
+    color: var(--base-gray-100);
+    
+}
+
