@@ -1,0 +1,25 @@
+#about{
+    padding-inline: 2rem;
+    padding-block: 2rem;
+
+    display: grid;
+    align-items: center;
+    gap: 2rem;
+    & .info{
+        width: 17.5rem;
+    }
+
+    & h1{
+        margin-bottom: .5rem;
+    }
+
+  @media (width >=80em){
+    grid-template-columns: auto 1fr 1fr ;
+
+    & .info{
+        justify-self: right;
+    }
+
+
+  }  
+}

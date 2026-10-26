@@ -1,0 +1,25 @@
+.cards-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.card{
+    width: 134px;
+    height: 103px;
+    
+    text-align: center;
+    background-color: #2D3136;
+    border-radius: 5px;
+    padding: 2px 0;
+
+    & img{
+        width: 126px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+}

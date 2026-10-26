@@ -1,0 +1,15 @@
+main{
+    overflow: auto;
+
+    & h1{
+        font-family: var(--h2);
+        color: #F9F9F9;
+    }
+
+    font-family: var(--text);
+    color: #C8CDD0 ;
+    
+}
+.main-container{
+    padding: 30px 100px;
+}

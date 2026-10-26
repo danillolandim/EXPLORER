@@ -1,0 +1,19 @@
+footer{
+    padding-block: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & ul{
+        display: flex;
+        gap: 1.25rem;
+    }
+
+    @media(width >= 80em){
+        flex-direction: row;
+        justify-content: space-between;
+        padding-block: 2rem;
+    }
+}

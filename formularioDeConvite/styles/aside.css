@@ -1,0 +1,15 @@
+.aside-container{
+    background-image: url(../assets/Background.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+  
+    height: 100%;
+    border-radius: 12px;
+    padding: 1rem;
+    
+
+    & h1{
+        font: 400 2.5rem/1.5 var(--logo);
+        color: #FF598B;
+    }
+}

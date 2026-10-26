@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --logo:"Leckerli One", cursive;
+    --h2:"Baloo 2", sans-serif;
+    --text: "Open Sans", sans-serif;
+   
+
+    --h2-md:400 1.75rem/1.5 var(--h2);
+    --h2-sm:400 1.125rem/1.4 var(--h2);
+
+    --text-md:200 1rem/1.5 var(--text);
+    --text-sm:200 0.875rem/1.5 var(--text);
+    --text-xs:200 0.75rem/1.5 var(--text);
+
+  background-color: black;
+}
+
+p{
+
+    font: var(--text-md);
+    color: #F9F9F9;
+}
+
+.convite-container{
+    margin: 5vh auto;
+    padding: 1.25rem;
+    width: 80vw;
+    height: 56.25vw;
+
+    background-color: #131516;
+    border-radius: 1.25rem;
+
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.flex{
+    display: flex;
+    gap: 20px;
+}
+
+.flex-1{
+    flex: 1;
+}
+
+.flex-2{
+    flex: 2;
+}
