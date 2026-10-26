@@ -59,23 +59,14 @@ section.about{
             top: 1.3125rem;
         }
 
-        &.pin{
-            width: 4.5rem;
-            left: calc(50% - 34.56rem);
-            top: 15.56rem;
-
-            &.show{
-                rotate: -12deg;
-            }
+        &.planchette{
+            left: calc(50% - 35.06rem);
+            top: 15.4rem;
         }
 
         &.crystal{
             left: calc(50% + 32.375rem);
             top: 14.5rem;
-
-            &.show{
-                rotate: 8deg;
-            }
         }
     }
 
@@ -91,7 +82,7 @@ section.about{
 }
 
 @media (width < 1200px){
-    section.about .about-icon.pin,
+    section.about .about-icon.planchette,
     section.about .about-icon.crystal{
         display: none;
     }
