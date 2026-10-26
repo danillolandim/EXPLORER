@@ -1,0 +1,32 @@
+header.top{
+    width: min(70rem, 100% - 2rem);
+    margin-inline: auto;
+    padding-top: 3.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    z-index: 2;
+
+    .logo img{
+        width: 14.375rem;
+        height: auto;
+        transition: transform 500ms var(--ease-out);
+    }
+
+    .logo:hover img{
+        transform: rotate(-4deg) scale(1.04);
+    }
+}
+
+@media (width < 768px){
+    header.top{
+        padding-top: 1.5rem;
+
+        .logo img{
+            width: 10rem;
+        }
+    }
+}

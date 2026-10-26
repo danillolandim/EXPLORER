@@ -1,0 +1,115 @@
+section.about{
+    width: min(75rem, 100% - 2rem);
+    height: 25rem;
+    margin: 35.375rem auto 0;
+    padding-top: 7.125rem;
+
+    position: relative;
+    z-index: 1;
+
+    p{
+        max-width: 71rem;
+        margin-inline: auto;
+        text-align: center;
+
+        font: 500 var(--title-sm)/2 var(--ff-base);
+        color: rgb(226 231 233 / .5);
+    }
+
+    .chunk{
+        transition: color 600ms ease;
+    }
+
+    strong{
+        font-weight: 700;
+        cursor: default;
+        transition: color 400ms ease;
+    }
+
+    /* cada trecho "acende" quando a palavra em destaque é revelada (hover, foco ou scroll no mobile) */
+    .chunk.revealed{
+        color: var(--text-body);
+
+        strong{
+            color: var(--blue-light);
+        }
+    }
+
+    .about-icon{
+        position: absolute;
+        width: 5.5rem;
+        height: auto;
+
+        opacity: 0;
+        scale: .3;
+        rotate: -20deg;
+        transition:
+            opacity 300ms ease,
+            scale 700ms cubic-bezier(.34, 1.56, .64, 1),
+            rotate 700ms cubic-bezier(.34, 1.56, .64, 1);
+
+        &.show{
+            opacity: 1;
+            scale: 1;
+            rotate: 0deg;
+        }
+
+        &.book{
+            left: calc(50% - 3.64rem);
+            top: 1.3125rem;
+        }
+
+        &.pin{
+            width: 4.5rem;
+            left: calc(50% - 34.56rem);
+            top: 15.56rem;
+
+            &.show{
+                rotate: -12deg;
+            }
+        }
+
+        &.crystal{
+            left: calc(50% + 32.375rem);
+            top: 14.5rem;
+
+            &.show{
+                rotate: 8deg;
+            }
+        }
+    }
+
+    .about-icon.show{
+        animation: float 4s 700ms ease-in-out infinite;
+    }
+}
+
+@keyframes float{
+    50%{
+        translate: 0 -.375rem;
+    }
+}
+
+@media (width < 1200px){
+    section.about .about-icon.pin,
+    section.about .about-icon.crystal{
+        display: none;
+    }
+}
+
+@media (width < 768px){
+    section.about{
+        height: auto;
+        margin-top: 0;
+        padding-top: 0;
+
+        p{
+            font-size: var(--text-lg);
+            line-height: 1.8;
+        }
+
+        .about-icon{
+            display: none;
+        }
+    }
+}

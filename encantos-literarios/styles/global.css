@@ -1,0 +1,139 @@
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    /* cores do style guide (nomes do Figma) */
+    --shape-background: #00050A;
+    --shape-base: #000F1F;
+    --shape-hover: #001933;
+    --shape-stroke: #002347;
+
+    --text-title: #F8FBFB;
+    --text-body: #E2E7E9;
+    --text-label: #BAC6C9;
+
+    --pink-low: #3F0F41;
+    --pink-dark: #7D298A;
+    --pink-base: #9547A5;
+    --pink-light: #C59DD2;
+
+    --blue-dark: #144A72;
+    --blue-base: #358BB9;
+    --blue-light: #73B6D2;
+
+    --ff-base: "Raleway", sans-serif;
+    --text-xs: 0.75rem;   /* 12px */
+    --text-sm: 0.875rem;  /* 14px */
+    --text-base: 1rem;    /* 16px */
+    --text-lg: 1.25rem;   /* 20px */
+    --title-sm: 2rem;     /* 32px */
+    --title-md: 2.5rem;   /* 40px */
+    --title-lg: 3rem;     /* 48px */
+
+    --ease-out: cubic-bezier(.22, 1, .36, 1);
+}
+
+html{
+    font: 400 var(--text-base)/1.4 var(--ff-base);
+    color: var(--text-body);
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: var(--shape-background);
+}
+
+/* os blurs do Figma são SVGs bem maiores que a tela; cada seção corta o excesso lateral */
+.intro, section.kit, section.pricing{
+    overflow-x: clip;
+}
+
+h1, h2, h3, h4{
+    font-weight: 700;
+    line-height: normal;
+    color: var(--text-title);
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+img{
+    display: block;
+}
+
+.button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    padding-inline: 1.25rem;
+    border-radius: .5rem;
+
+    font: 700 var(--text-sm)/1 var(--ff-base);
+    color: var(--text-title);
+
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    background-color: var(--button-color);
+    transition: transform 200ms;
+
+    /* o ponto de 4px no centro (asset "ellipse" do Figma) cresce no hover e preenche o botão */
+    &::before{
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: var(--button-hover);
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        z-index: -1;
+
+        transition: scale 500ms var(--ease-out);
+    }
+
+    &:hover::before,
+    &:focus-visible::before{
+        scale: 80;
+    }
+
+    &:active{
+        transform: scale(.97);
+    }
+
+    &.pink{
+        --button-color: var(--pink-dark);
+        --button-hover: var(--pink-base);
+    }
+
+    &.blue{
+        --button-color: var(--blue-dark);
+        --button-hover: var(--blue-base);
+    }
+}
+
+:focus-visible{
+    outline: 2px solid var(--blue-light);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+        animation-duration: 1ms !important;
+        animation-delay: 0ms !important;
+        transition-duration: 1ms !important;
+    }
+
+    html{
+        scroll-behavior: auto;
+    }
+}

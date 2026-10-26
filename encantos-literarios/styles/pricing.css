@@ -1,0 +1,260 @@
+section.pricing{
+    min-height: 77.125rem;
+    padding-top: 12.125rem;
+    position: relative;
+    text-align: center;
+
+    background: url(../assets/pricing/pricing-background.png) top center / 90rem auto no-repeat;
+
+    .pricing-blur{
+        position: absolute;
+        width: 130rem;
+        max-width: none;
+        left: calc(50% - 65rem);
+        top: -29.1875rem;
+        pointer-events: none;
+    }
+
+    h2{
+        font-size: var(--title-sm);
+        position: relative;
+    }
+
+    .plans{
+        width: 65.625rem;
+        height: 37.875rem;
+        margin: 3.5rem auto 0;
+        position: relative;
+        text-align: left;
+    }
+
+    .sparkle{
+        position: absolute;
+        transition: transform 1s var(--ease-out);
+
+        &.s1{ left: 2.43rem; top: 8.37rem; width: 1.625rem; transform: translate(18.22rem, -3.93rem); rotate: -8deg; }
+        &.s2{ left: 2.15rem; top: 10.78rem; width: .816rem; transform: translate(18.22rem, -3.93rem); rotate: -8deg; }
+        &.s3{ left: 58.97rem; top: 35.54rem; width: 1.451rem; transform: translate(-16.14rem, -2.66rem); rotate: 8deg; }
+        &.s4{ left: 56.96rem; top: 36.33rem; width: .703rem; transform: translate(-16.14rem, -3.06rem); rotate: 8deg; }
+    }
+
+    .card{
+        width: 18rem;
+        height: 26rem;
+        padding: 2rem 2rem 1.75rem;
+        border-radius: 1.5rem;
+
+        background-color: var(--shape-base);
+        border: 1px solid var(--shape-stroke);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        /* estado inicial (variante "before"): os 3 cards empilhados no centro */
+        position: absolute;
+        left: 23.8125rem;
+        top: 5.625rem;
+
+        --x: 0rem;
+        --y: 0rem;
+        --r: 0deg;
+        transform: translate(var(--x), var(--y)) rotate(var(--r));
+        transition: transform 1s var(--ease-out), box-shadow 400ms ease;
+
+        h3{
+            font-size: var(--text-base);
+            color: var(--blue-light);
+        }
+
+        header{
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .price{
+            font-size: var(--title-md);
+            font-weight: 700;
+            line-height: normal;
+            color: var(--text-title);
+            margin-bottom: -1rem;
+
+            span{
+                font-size: var(--text-base);
+            }
+        }
+
+        .total{
+            font-size: var(--text-sm);
+            color: var(--text-label);
+        }
+
+        .details{
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        ul{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .75rem;
+        }
+
+        li{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: var(--text-xs);
+
+            /* o SVG da estrela tem 38px por causa do brilho; a estrela visível tem 14px */
+            &::before{
+                content: "";
+                flex-shrink: 0;
+                width: .875rem;
+                height: .875rem;
+                background: url(../assets/icons/star-blue.svg) center / 2.375rem no-repeat;
+            }
+        }
+
+        .button{
+            width: 100%;
+        }
+
+        &:hover{
+            box-shadow: 0 1.5rem 3rem rgb(0 0 0 / .4);
+        }
+    }
+
+    .card.semestral{
+        background-color: var(--shape-hover);
+        border-color: transparent;
+        z-index: 1;
+
+        h3{
+            color: var(--pink-light);
+        }
+
+        li::before{
+            background-image: url(../assets/icons/star-pink.svg);
+        }
+
+        .tag{
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            padding: .5625rem 1.25rem;
+            border-radius: 999px;
+            background-color: var(--shape-stroke);
+
+            font: 700 .625rem/1 var(--ff-base);
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+
+        .bunny{
+            position: absolute;
+            left: 2rem;
+            top: -3.137rem;
+            width: 2.816rem;
+            z-index: -1;
+
+            translate: 0 100%;
+            transition: translate 600ms 900ms cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        &:hover .bunny{
+            animation: wiggle 600ms ease-in-out;
+        }
+    }
+
+    &.is-visible{
+        .sparkle{
+            transform: none;
+        }
+
+        .card.mensal{
+            --x: -18.09rem;
+            --y: 3.06rem;
+            --r: -8deg;
+        }
+
+        .card.anual{
+            --x: 18.08rem;
+            --y: 3.06rem;
+            --r: 8deg;
+        }
+
+        .card.semestral{
+            --x: .03rem;
+            --y: -.49rem;
+
+            .bunny{
+                translate: 0 0;
+            }
+        }
+
+        /* no hover o card sobe e "desentorta" um pouco, como no protótipo */
+        .card:hover{
+            --y: 2.25rem;
+            transition-duration: 400ms;
+        }
+
+        .card.mensal:hover{ --r: -4deg; }
+        .card.anual:hover{ --r: 4deg; }
+        .card.semestral:hover{ --y: -1.25rem; }
+    }
+}
+
+@keyframes wiggle{
+    25%{ rotate: -8deg; }
+    75%{ rotate: 8deg; }
+}
+
+@media (width < 1100px){
+    section.pricing{
+        min-height: auto;
+        padding: 6rem 1rem 8rem;
+        background-size: cover;
+
+        .plans{
+            width: auto;
+            height: auto;
+            margin-top: 5rem;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4rem 1.5rem;
+        }
+
+        .sparkle{
+            display: none;
+        }
+
+        .card{
+            position: relative;
+            left: auto;
+            top: auto;
+            width: min(18rem, 100%);
+            height: auto;
+            gap: 2.5rem;
+            transform: none;
+
+            &.mensal{ order: 1; }
+            &.semestral{ order: 2; }
+            &.anual{ order: 3; }
+        }
+
+        /* sem leque: o transform ignora as variáveis de posição do desktop */
+        &.is-visible .card{
+            transform: none;
+        }
+
+        &.is-visible .card:hover{
+            transform: translateY(-.5rem);
+        }
+    }
+}

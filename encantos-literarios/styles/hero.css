@@ -1,0 +1,99 @@
+/* .intro agrupa hero + parágrafo, como o frame "Hero" (1440x1524) do Figma */
+.intro{
+    position: relative;
+    min-height: 95.25rem;
+}
+
+.hero-background{
+    position: absolute;
+    inset: 0 0 auto;
+    height: 59.25rem;
+
+    background: url(../assets/hero/hero-background.png) center / cover no-repeat;
+
+    /* camada "Gradient" (#00050a) do Figma: começa cobrindo tudo e some */
+    &::after{
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: var(--shape-background);
+        animation: fade-out 1.6s 200ms ease-out forwards;
+    }
+}
+
+.blurs{
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    img{
+        position: absolute;
+        max-width: none;
+    }
+
+    /* SVGs com feGaussianBlur: o canvas é maior que o círculo, então o left/top compensa a borda do blur */
+    img:nth-child(1){ left: calc(50% - 13.56rem); top: 3.4rem; width: 114.2rem; }
+    img:nth-child(2){ left: calc(50% - 92.94rem); top: -.9rem; width: 87rem; }
+    img:nth-child(3){ left: calc(50% + 6.75rem); top: -6.4rem; width: 73.6rem; }
+    img:nth-child(4){ left: calc(50% - 84.75rem); top: 7.4rem; width: 142.1rem; }
+}
+
+section.hero{
+    width: min(41rem, 100% - 2rem);
+    margin: 10.25rem auto 0;
+    text-align: center;
+
+    position: relative;
+    z-index: 1;
+
+    h1{
+        font-size: var(--title-lg);
+        animation: fade-up 1s 600ms var(--ease-out) both;
+    }
+
+    p{
+        max-width: 35.5rem;
+        margin: 2rem auto 0;
+        font-size: var(--text-lg);
+        animation: fade-up 1s 900ms var(--ease-out) both;
+    }
+}
+
+@keyframes fade-out{
+    to{
+        opacity: 0;
+    }
+}
+
+@keyframes fade-up{
+    from{
+        opacity: 0;
+        transform: translateY(1.5rem);
+    }
+}
+
+@media (width < 768px){
+    .intro{
+        min-height: auto;
+        padding-bottom: 4rem;
+    }
+
+    .hero-background{
+        height: 42rem;
+    }
+
+    section.hero{
+        margin-top: 4rem;
+        /* reserva a altura da ilustração (42rem - header - margem) para o parágrafo ficar abaixo do livro */
+        min-height: 36rem;
+
+        h1{
+            font-size: var(--title-sm);
+        }
+
+        p{
+            font-size: var(--text-base);
+            margin-top: 1.25rem;
+        }
+    }
+}

@@ -1,0 +1,209 @@
+section.kit{
+    min-height: 99.125rem;
+    padding-top: 14.6875rem;
+    position: relative;
+
+    .kit-blur{
+        position: absolute;
+        width: 133.125rem;
+        max-width: none;
+        left: calc(50% - 66.5625rem);
+        top: -14.625rem;
+        pointer-events: none;
+    }
+
+    > header{
+        text-align: center;
+        position: relative;
+        z-index: 1;
+
+        h2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: var(--title-sm);
+
+            /* o SVG tem 88px porque inclui o brilho; a estrela visível tem 32px */
+            img{
+                width: 5.5rem;
+                margin: -1.75rem;
+            }
+
+            img:first-child{
+                margin-right: calc(-1.75rem + 1rem);
+            }
+
+            img:last-child{
+                margin-left: calc(-1.75rem + 1rem);
+            }
+        }
+
+        p{
+            margin-top: .3rem;
+        }
+    }
+
+    .stage{
+        width: min(65rem, 100% - 2rem);
+        aspect-ratio: 1040 / 920;
+        margin: 5.5rem auto 0;
+        position: relative;
+
+        /* no Figma a composição fica 60px à direita do centro do frame de 1440 */
+        @media (width >= 1100px){
+            translate: 3.75rem 0;
+        }
+
+        > *{
+            position: absolute;
+        }
+
+        .book{
+            left: 20.48%;
+            top: 14.57%;
+            width: 44.9%;
+            z-index: 3;
+        }
+
+        .bookmark{
+            left: 45.77%;
+            top: 18.48%;
+            width: 16.54%;
+            border-radius: 4px;
+            box-shadow: 2px 4px 20px rgb(0 0 0 / .25);
+            transition: transform 1.2s var(--ease-out);
+
+            &.yellow{
+                z-index: 1;
+                transition-delay: 100ms;
+            }
+
+            &.purple{
+                z-index: 2;
+                transition-delay: 250ms;
+            }
+        }
+
+        .pin{
+            left: 25.63%;
+            top: 49.49%;
+            width: 21.35%;
+            z-index: 2;
+            transition: transform 1.2s 150ms var(--ease-out);
+        }
+
+        .label{
+            font-size: var(--text-base);
+            color: var(--text-title);
+            white-space: nowrap;
+            translate: -50% 0;
+            z-index: 4;
+
+            opacity: 0;
+            transform: translateY(.75rem);
+            transition: opacity 600ms ease, transform 600ms var(--ease-out);
+            transition-delay: 800ms;
+        }
+
+        .book-label{ left: 6.54%; top: 7.72%; }
+        .pin-label{ left: 7.21%; top: 49.67%; }
+        .bookmark-label{ left: 69.81%; top: 94.24%; }
+
+        /* as setas "se desenham" com clip-path */
+        .arrow{
+            z-index: 4;
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 700ms ease-in-out;
+            transition-delay: 1s;
+        }
+
+        .book-arrow{ left: 7.88%; top: 12.28%; width: 16.06%; }
+        .pin-arrow{ left: 2.69%; top: 53.9%; width: 10.77%; clip-path: inset(0 0 100% 0); }
+        .bookmark-arrow{ left: 69.33%; top: 75.43%; width: 14.71%; clip-path: inset(0 0 0 100%); }
+    }
+
+    &.is-visible .stage{
+        .bookmark.yellow{
+            transform: translate(94%, -20%) rotate(8deg);
+        }
+
+        .bookmark.purple{
+            transform: translate(156%, -.6%) rotate(22deg);
+        }
+
+        .pin{
+            transform: translate(-88%, 37%);
+        }
+
+        .label{
+            opacity: 1;
+            transform: none;
+        }
+
+        .arrow{
+            clip-path: inset(0);
+        }
+    }
+
+    /* micro-interação: os itens do kit reagem ao mouse */
+    &.is-visible .stage{
+        .book{
+            transition: transform 500ms var(--ease-out);
+        }
+
+        .book:hover{
+            transform: translateY(-.5rem) rotate(-1deg);
+        }
+
+        .pin:hover{
+            transform: translate(-88%, 37%) rotate(-10deg);
+            transition-delay: 0ms;
+            transition-duration: 500ms;
+        }
+    }
+}
+
+@media (width < 768px){
+    section.kit{
+        min-height: auto;
+        padding: 6rem 0 4rem;
+
+        > header h2{
+            font-size: 1.5rem;
+
+            img{
+                width: 4rem;
+                margin: -1.25rem;
+            }
+
+            img:first-child{
+                margin-right: -.75rem;
+            }
+
+            img:last-child{
+                margin-left: -.75rem;
+            }
+        }
+
+        .stage{
+            margin-top: 2.5rem;
+
+            .arrow{
+                display: none;
+            }
+
+            .label{
+                font-size: var(--text-xs);
+                padding: .25rem .625rem;
+                border-radius: 999px;
+                background-color: rgb(0 15 31 / .8);
+                border: 1px solid var(--shape-stroke);
+            }
+
+            .book-label{ left: 50%; top: 4%; }
+            .pin-label{ left: 22%; top: 88%; }
+            .bookmark-label{ left: 78%; top: 88%; }
+        }
+    }
+}
